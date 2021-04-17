@@ -8,7 +8,7 @@ public class LC020_有效的括号 {
 	public boolean isValid(String s) {
 
 		Stack<Character> stack = new Stack<>();
-		Map<Character, Character> map = new HashMap<>() {
+		Map<Character, Character> map = new HashMap<Character, Character>() {
 			{
 				put('}', '{');
 				put(']', '[');

@@ -6,18 +6,19 @@ import java.util.List;
 import base.TreeNode;
 
 public class LC145_二叉树的后序遍历 {
-	private List<Integer> list = new ArrayList<>();
-
-	public List<Integer> preorderTraversal(TreeNode root) {
-		if (root == null) {
-			return list;
-		}
-		preorderTraversal(root.left);
-		preorderTraversal(root.right);
-		list.add(root.val);
-		return list;
+	public List<Integer> postorderTraversal(TreeNode root) {
+	    List<Integer> res = new ArrayList<>();
+	    postorder(root, res);
+	    return res;
 	}
-
+	void postorder(TreeNode root, List<Integer> list) {
+	    if (root == null) {
+	        return;
+	    }
+	    postorder(root.left, list);
+	    postorder(root.right, list);
+	    list.add(root.val);
+	}
 }
 
 class NC_实现二叉树先序_中序和后序遍历 {

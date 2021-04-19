@@ -2,6 +2,7 @@ package topic.binarytree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import base.TreeNode;
 
@@ -32,5 +33,22 @@ public class LC094_二叉树的中序遍历 {
 		inorder(root.left, res);
 		res.add(root.val);
 		inorder(root.right, res);
+	}
+	// 迭代
+	ArrayList<Integer> inOrder(TreeNode root) {
+		ArrayList<Integer> list = new ArrayList<Integer>();
+		Stack<TreeNode> stack = new Stack<TreeNode>();
+		TreeNode current = root;
+		while (current != null || !stack.empty()) {
+			while (current != null) {
+				stack.add(current);
+				current = current.left;
+			}
+			current = stack.peek();
+			stack.pop();
+			list.add(current.val);
+			current = current.right;
+		}
+		return list;
 	}
 }
